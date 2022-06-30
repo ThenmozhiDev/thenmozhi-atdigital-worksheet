@@ -1,0 +1,262 @@
+@import "https://fonts.googleapis.com/css?family=Lato:400,700";
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #eee;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  min-height: 75px;
+  padding: 0px 20px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eee;
+  position: sticky;
+  top: 0;
+  margin: 0 15px;
+}
+
+#logo {
+  height: 100%;
+  max-width: 300px;
+}
+
+nav {
+  font-size: 16px;
+}
+nav > ul {
+  display: flex;
+  justify-content: space-around;
+  width: 35vw;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+li {
+  list-style: none;
+  justify-content: space-evenly;
+}
+
+h2 {
+  font-size: 24px;
+  text-align: center;
+}
+#section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+form {
+  margin-top: 25px;
+}
+
+input[name="email"] {
+  max-width: 275px;
+  width: 100%;
+  padding: 5px;
+}
+input[class="button"] {
+  margin: 15px 0;
+  border: none;
+  color: black;
+  background-color: gold;
+  font-size: 1em;
+  padding: 0 20px;
+  font-weight: 900;
+  height: 30px;
+  max-width: 150px;
+  cursor: pointer;
+}
+input[class="button"]:hover {
+  background-color: darkorange;
+  transition: background-color 1s;
+}
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+.display {
+  display: flex;
+}
+.image {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 125px;
+  width: 20vw;
+  color: darkorange;
+}
+.paragraph {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 125px;
+  width: 80vw;
+  padding: 5px;
+}
+.subhead {
+  font-size: 24px;
+  margin-bottom: 0;
+  text-align: left;
+}
+p {
+  margin: 0px;
+}
+#how-it-works {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  scroll-margin-top: 50px;
+}
+.size {
+  width: 100%;
+  max-width: 560px;
+}
+
+#pricing {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: 10px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  max-width: 300px;
+}
+.head {
+  background-color: #ddd;
+  color: black;
+  padding: 15px 0;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.product > ol {
+  margin: 15px 0;
+}
+.product > ol > li {
+  padding: 5px 0;
+  font-size: 16px;
+  padding: 5px 0;
+}
+.btn-style {
+  border: none;
+  background-color: #f1c40f;
+  height: 40px;
+  width: 35%;
+  margin: 20px;
+  border-radius: 2px;
+  font-size: 16px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+.footer {
+  margin-top: 30px;
+  background-color: #ddd;
+  padding: 20px;
+}
+.footer > ul {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 16px;
+}
+footer > ul > li {
+  padding: 0 10px;
+}
+.text {
+  text-align: end;
+  font-size: 14.4px;
+  margin-top: 5px;
+  color: #444;
+}
+.product > h2 {
+  margin-top: 15px;
+}
+
+input[class="btn-style"]:hover {
+  background-color: darkorange;
+  transition: background-color 1s;
+}
+#features {
+  margin-top: 50px;
+  scroll-margin-top: 50px;
+}
+@media (max-width: 600px) {
+  #pricing {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product {
+    margin: 5px;
+  }
+  header {
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+  }
+  #logo {
+    height: 100%;
+    max-width: 300px;
+
+    margin: 15px auto;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 50px;
+  }
+  nav > ul {
+    display: block;
+  }
+  nav li {
+    padding-bottom: 5px;
+  }
+  .display {
+    display: block;
+  }
+  .image {
+    display: none;
+  }
+  .paragraph {
+    text-align: center;
+    width: 100%;
+    height: 150px;
+    padding: 0;
+  }
+  .subhead {
+    text-align: center;
+  }
+  #features {
+    scroll-margin-top: 100px;
+  }
+  #how-it-works {
+    scroll-margin-top: 100px;
+  }
+}
+
