@@ -9,6 +9,7 @@
     <style>
       body {
         width: 260px;
+        font-family: sans-serif;
       }
       .element {
         padding: 20px;
@@ -16,22 +17,16 @@
         /* border: 1px solid;*/
         justify-content: space-between;
       }
-      select {
-        border: none;
-        font-weight: bold;
-      }
-      button {
+      .button {
         border: none;
         background-color: white;
         color: darkgray;
         font-size: 13px;
-        font-family: sans-serif;
       }
-      p {
+      .text {
         margin: 0;
         font-size: 13px;
         font-weight: bold;
-        font-family: sans-serif;
         padding-top: 2px;
       }
       .icon {
@@ -47,12 +42,12 @@
   <body>
     <div class="element">
       <div class="left-content">
-        <p>Associated Jobs (0)</p>
+        <p class="text">Associated Jobs (0)</p>
         <i class="fa icon">&#xf107;</i>
       </div>
       <div class="right-content">
         <span>+</span>
-        <button type="button">Add</button>
+        <button type="button" class="button">Add</button>
       </div>
     </div>
   </body>
