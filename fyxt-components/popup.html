@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Popup</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@100;700&family=Nunito+Sans&family=Oswald:wght@200;400&family=Raleway:wght@700&family=Roboto:ital,wght@0,900;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@100;700&family=Nunito+Sans&family=Oswald:wght@200;400&family=Raleway:wght@700&family=Roboto:ital,wght@0,100;0,300;0,900;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@100;700&family=Nunito+Sans&family=Oswald:wght@200;400&family=Raleway:wght@700&family=Roboto:ital,wght@0,100;0,300;0,500;0,900;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+      }
+      body {
+        background-color: pink;
+        margin: 0;
+        font-family: Roboto;
+        height: 100%;
+        display: flex;
+      }
+      .content {
+        background-color: white;
+        width: 100%;
+        margin: auto;
+        max-width: 1000px;
+      }
+      .form {
+        padding: 20px;
+      }
+      .icon-style {
+        position: relative;
+        margin-bottom: 15px;
+      }
+      .glyphicon {
+        position: absolute;
+        top: 12px;
+        display: inline-block;
+        font-family: "Glyphicons Halflings";
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        left: 15px;
+      }
+      .icon {
+        color: #999999;
+        font-size: 17px;
+      }
+      .input {
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 5px;
+        padding-left: 40px;
+        font-size: 13px;
+        border: 1px solid #dadfe6;
+        vertical-align: text-top;
+      }
+      .data {
+        padding: 20px;
+      }
+      .types {
+        display: flex;
+        padding-bottom: 40px;
+      }
+      .text {
+        margin: 0;
+        font-size: 14px;
+        color: #999999;
+        font-weight: 400;
+      }
+      .types-input {
+        width: 100%;
+        margin-left: 41px;
+      }
+      .types-input2 {
+        width: 100%;
+        margin-left: 58px;
+      }
+      .types-input3 {
+        width: 100%;
+        margin-left: 28px;
+      }
+      .line {
+        border: none;
+        border-bottom: 1px solid #dadfe6;
+        width: 100%;
+      }
+      .types1 {
+        display: flex;
+      }
+      .type-style {
+        display: flex;
+        border-bottom: 1px solid #dadfe6;
+        flex-grow: 1;
+        margin-left: 45px;
+      }
+      .space {
+        padding-right: 196px;
+      }
+      .space-one {
+        padding-right: 30px;
+        margin: 10px 0 0 0;
+        font-size: 14px;
+        color: #999999;
+        font-weight: 400;
+      }
+      .div-content {
+        display: flex;
+        margin-top: 30px;
+      }
+      .check {
+        width: 30px;
+        height: 20px;
+      }
+      .check-text {
+        margin: 0 0 0 5px;
+        vertical-align: super;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      .dropdown {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 20px;
+      }
+      .list {
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #dadfe6;
+        font-size: 14px;
+      }
+
+      .button {
+        display: flex;
+        justify-content: end;
+        padding: 20px;
+      }
+      .list1 {
+        width: 100%;
+        padding-bottom: 10px;
+        border: none;
+        font-size: 14px;
+      }
+      .button1 {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 20px;
+        background-color: #f55600;
+        color: white;
+      }
+      .button2 {
+        padding: 10px 20px;
+        border: 1px solid #dadfe6;
+        border-radius: 5px;
+        background-color: white;
+        color: gray;
+      }
+      .type-text {
+        font-size: 14px;
+        color: #999999;
+        margin: 20px 0 0 0;
+        font-weight: 400;
+      }
+      hr {
+        margin: 0;
+      }
+      .reduce {
+        margin: 0;
+      }
+      .calender {
+        font-size: 25px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div>
+        <div class="form">
+          <form>
+            <div class="icon-style">
+              <i class="icon glyphicon glyphicon-search"></i>
+              <input type="text" class="input" placeholder="Search by Job ID" />
+            </div>
+          </form>
+        </div>
+        <div class="data">
+          <div class="types">
+            <label for="" class="text">From</label>
+            <div class="types-input">
+              <input type="text" class="line" title="123" placeholder="" />
+            </div>
+          </div>
+          <div class="types">
+            <label for="" class="text">To</label>
+            <div class="types-input2">
+              <input type="text" class="line" title="123" placeholder="" />
+            </div>
+          </div>
+          <div class="types">
+            <label for="" class="text">Subject</label>
+            <div class="types-input3">
+              <input type="text" class="line" title="123" placeholder="" />
+            </div>
+          </div>
+          <div class="types">
+            <label for="" class="type-text">Date</label>
+            <div class="type-style">
+              <select class="list1" title="search">
+                <option value="1 Day">1 Day</option>
+              </select>
+              <i class="fa fa-calendar calender"></i>
+            </div>
+          </div>
+          <div class="types1">
+            <label for="" class="space-one">Search</label>
+
+            <select class="list" title="mail">
+              <option value="All Mail">All Mail</option>
+            </select>
+          </div>
+          <div class="div-content">
+            <form>
+              <input type="checkbox" class="check" title="123" placeholder="" />
+              <label for="" class="check-text">Has attachment</label>
+            </form>
+          </div>
+        </div>
+        <hr />
+        <div class="dropdown">
+          <p class="reduce">Property</p>
+          <i class="fa icon">&#xf107;</i>
+        </div>
+        <hr />
+        <div class="dropdown">
+          <p class="reduce">Tenant</p>
+          <i class="fa icon">&#xf107;</i>
+        </div>
+        <hr />
+        <div class="dropdown">
+          <p class="reduce">Assigned To Conversation</p>
+          <i class="fa icon">&#xf107;</i>
+        </div>
+        <hr />
+        <div class="dropdown">
+          <p class="reduce">Category</p>
+          <i class="fa icon">&#xf107;</i>
+        </div>
+        <hr />
+        <div class="button">
+          <button type="button" class="button1">Search</button>
+          <button type="button" class="button2">Create Filters</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
