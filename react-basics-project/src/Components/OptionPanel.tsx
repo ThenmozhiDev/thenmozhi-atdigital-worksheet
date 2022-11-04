@@ -1,29 +1,34 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Box } from "@mui/material";
+import { useState } from "react";
 import AddOptionCard from "./AddOptionCard";
 import OptionCard from "./OptionCard";
+import { ChangeEvent } from "react";
 
-
-export default function OptionPanel() {
-  const [isShow, setIsShow] = useState(false);
-  const [addOptions, setAddOptions] = useState<{ Name: string }[]>([]);
-
-  let addOptionHandler = () => {
-    setAddOptions([...addOptions,  { Name: ""}]);
+interface defaultProps {
+  addOptionHandler: () => void;
+  addOptions: { Name: string }[];
+  
+  handleOption: (i: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
+  
 }
+
+export default function OptionPanel({
+  addOptionHandler,
+  addOptions,
+  handleOption,
+
+}: defaultProps) {
+
+  
   return (
     <Box marginY={4}>
       <Box display={"flex"}>
-       {addOptions.map((element, index) => (
-     <OptionCard />
-))}
-      <AddOptionCard />
+        {addOptions.map((element: any, index: any) => (
+          <OptionCard  onChange={(e) => handleOption(index, e)}/>
+        ))}
+        <AddOptionCard onChange={addOptionHandler} />
       </Box>
-      <Typography marginTop="30px" marginLeft="25px" >
-        <Button variant="contained" type="submit">
-          SUBMIT
-        </Button>
-      </Typography>
     </Box>
   );
 }

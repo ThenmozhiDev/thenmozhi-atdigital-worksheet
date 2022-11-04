@@ -1,16 +1,10 @@
-
-import React from 'react';
-import OptionPanel from './Components/OptionPanel';
-
-
+import MainOptionCard from "./Components/MainOptionCard";
 
 function App() {
   return (
-    <div>
-   
-     <OptionPanel />
-    </div>
+    <>
+      <MainOptionCard  />
+    </>
   );
 }
-
 export default App;

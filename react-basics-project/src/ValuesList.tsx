@@ -18,13 +18,13 @@ export default function ValuesList() {
   let addValueHandler = () => {
     setAddValues([...addValues, { Name: "" }]);
   };
+  
 
   return (
     <>
       {addValues.map((element, index) => (
         <Box marginBottom="20px">
           <TextField
-            id="standard-basic"
             variant="standard"
             label={"Value" + " " + (index + 1)}
             onChange={(e) => handleChange(index, e)}
