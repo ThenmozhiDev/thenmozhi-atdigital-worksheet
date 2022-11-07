@@ -4,8 +4,7 @@ import OptionPanel from "./OptionPanel";
 
 export default function MainOptionCard() {
   const [addOptions, setAddOptions] = useState<{ Name: string }[]>([]);
-  const [addValues, setAddValues] = useState<{ Name: string }[]>([]);
-
+  const [addValues, setAddValues] = useState<{ Name: string }[][]>([]);
 
   let handleOption = (
     i: number,
@@ -18,18 +17,22 @@ export default function MainOptionCard() {
 
   let handleChange = (
       i: number,
+      j:number,
       e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
       let newAddValues = [...addValues];
-      newAddValues[i]["Name"] = e.target.value;
+      newAddValues[i][j]["Name"] = e.target.value;
       setAddValues(newAddValues);
     };
-    let addValueHandler = () => {
-        setAddValues([...addValues, { Name: "" }]);
+    let addValueHandler = (i: number) => {
+      let newAddValues = [...addValues];
+      newAddValues[i]=[...addValues[i], { Name: "" }];
+      setAddValues(newAddValues);
       };
   
   let addOptionHandler = () => {
     setAddOptions([...addOptions, { Name: ""}]);
+    setAddValues([...addValues, []]);
   };
   const submitHandler = () => {
     //e.preventDefault();

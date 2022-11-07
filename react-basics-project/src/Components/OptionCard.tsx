@@ -8,10 +8,12 @@ interface defaultProps {
   addValues: {Name: string } [];
   handleChange: (i: number,
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
+    index: number;
 }
 
 export default function OptionCard({onChange, addValueHandler,
   addValues,
+  index,
   handleChange}: defaultProps) {
   
   return (
@@ -28,7 +30,7 @@ export default function OptionCard({onChange, addValueHandler,
       </Typography>
       <Typography marginBottom="20px">Options</Typography>
      
-      <ValuesList handleChange={handleChange} onChange1={addValueHandler} addValues={addValues}/>
+      <ValuesList handleChange={handleChange} addValueHandler={addValueHandler} addValues={addValues} index={index}/>
   
     </Box>
   );

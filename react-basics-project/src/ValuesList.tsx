@@ -4,45 +4,34 @@ import { useState } from "react";
 import { ChangeEvent } from "react";
 
 interface valueProps {
-  
-  onChange1: () => void;
-  addValues: {Name: string } [];
-  handleChange: (i: number,
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
-   
+  addValueHandler: () => void;
+  addValues: { Name: string }[];
+  handleChange: (
+    i: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  index: number;
 }
 
-export default function ValuesList({handleChange, onChange1, addValues}: valueProps) {
-  // const [addValues, setAddValues] = useState<{ Name: string }[]>([]);
-
-  // let handleChange = (
-  //   i: number,
-  //   e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   let newAddValues = [...addValues];
-  //   newAddValues[i]["Name"] = e.target.value;
-  //   setAddValues(newAddValues);
-  // };
-
-  // let addValueHandler = () => {
-  //   setAddValues([...addValues, { Name: "" }]);
-  // };
-  
-
+export default function ValuesList({
+  index,
+  addValueHandler,
+  addValues,
+  handleChange,
+}: valueProps) {
   return (
     <>
-      {addValues.map((element, index) => ( 
-        <Box marginBottom="20px">
+      {addValues.map((element, index) => (
+        <Box marginBottom="20px" key={index}>
           <TextField
             variant="standard"
             label={"Value" + " " + (index + 1)}
-            onChange={(e)=> (handleChange(index, e))}
-            
+            onChange={(e) => handleChange(index, e)}
           />
         </Box>
-      ))} 
+      ))}
       <Typography marginTop="30px">
-        <Button variant="contained" onClick={onChange1}>
+        <Button variant="contained" onClick={addValueHandler}>
           ADD VALUE
         </Button>
       </Typography>
