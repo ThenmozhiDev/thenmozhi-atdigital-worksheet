@@ -10,6 +10,10 @@ interface defaultProps {
   
   handleOption: (i: number,
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
+    addValueHandler: () => void;
+    addValues: {Name: string } [];
+    handleChange: (i: number,
+      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
   
 }
 
@@ -17,6 +21,9 @@ export default function OptionPanel({
   addOptionHandler,
   addOptions,
   handleOption,
+  addValueHandler,
+  addValues,
+  handleChange
 
 }: defaultProps) {
 
@@ -25,7 +32,7 @@ export default function OptionPanel({
     <Box marginY={4}>
       <Box display={"flex"}>
         {addOptions.map((element: any, index: any) => (
-          <OptionCard  onChange={(e) => handleOption(index, e)}/>
+          <OptionCard  onChange={(e) => handleOption(index, e)} addValueHandler={addValueHandler} addValues={addValues} handleChange={handleChange} />
         ))}
         <AddOptionCard onChange={addOptionHandler} />
       </Box>

@@ -4,9 +4,15 @@ import ValuesList from "../ValuesList";
 
 interface defaultProps {
   onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  addValueHandler: () => void;
+  addValues: {Name: string } [];
+  handleChange: (i: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
 }
 
-export default function OptionCard({onChange}: defaultProps) {
+export default function OptionCard({onChange, addValueHandler,
+  addValues,
+  handleChange}: defaultProps) {
   
   return (
     <Box
@@ -21,7 +27,9 @@ export default function OptionCard({onChange}: defaultProps) {
         <TextField id="standard-basic" label="Option Name" variant="standard"  onChange={onChange}/>
       </Typography>
       <Typography marginBottom="20px">Options</Typography>
-      <ValuesList />
+     
+      <ValuesList handleChange={handleChange} onChange1={addValueHandler} addValues={addValues}/>
+  
     </Box>
   );
 }
