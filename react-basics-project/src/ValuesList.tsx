@@ -5,7 +5,7 @@ import { ChangeEvent } from "react";
 
 interface valueProps {
   addValueHandler: () => void;
-  addValues: { Name: string }[];
+  addValues: string[];
   handleChange: (
     i: number,
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,6 +27,7 @@ export default function ValuesList({
             variant="standard"
             label={"Value" + " " + (index + 1)}
             onChange={(e) => handleChange(index, e)}
+            key={index}
           />
         </Box>
       ))}

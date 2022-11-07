@@ -5,7 +5,7 @@ import ValuesList from "../ValuesList";
 interface defaultProps {
   onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   addValueHandler: () => void;
-  addValues: {Name: string } [];
+  addValues:  string[];
   handleChange: (i: number,
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
     index: number;

@@ -6,12 +6,11 @@ import { ChangeEvent } from "react";
 
 interface defaultProps {
   addOptionHandler: () => void;
-  addOptions: { Name: string }[];
+  addOptions: { Name: string, Options: string[] }[];
   
   handleOption: (i: number,
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
     addValueHandler: (i: number) => void;
-    addValues: {Name: string } [][];
     handleChange: (i: number, j:number,
       e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void;
    
@@ -23,7 +22,6 @@ export default function OptionPanel({
   addOptions,
   handleOption,
   addValueHandler,
-  addValues,
   handleChange,
 
 
@@ -34,7 +32,7 @@ export default function OptionPanel({
     <Box marginY={4}>
       <Box display={"flex"}>
         {addOptions.map((element: any, index: any) => (
-          <OptionCard  onChange={(e) => handleOption(index, e)} addValueHandler={() => addValueHandler(index)} addValues={addValues[index]} handleChange={(i, e) => handleChange(index, i, e)} index={index} />
+          <OptionCard  key={index} onChange={(e) => handleOption(index, e)} addValueHandler={() => addValueHandler(index)} addValues={addOptions[index]["Options"]} handleChange={(i, e) => handleChange(index, i, e)} index={index} />
         ))}
         <AddOptionCard onChange={addOptionHandler} />
       </Box>
