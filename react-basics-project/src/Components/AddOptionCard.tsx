@@ -11,7 +11,7 @@ export default function AddOptionCard({ onChange }: defaultProps) {
         border="1px solid black"
         padding={2}
         width={"100%"}
-        height={"363px"}
+        height={"420px"}
         maxWidth={"234px"}
       >
         <Typography>

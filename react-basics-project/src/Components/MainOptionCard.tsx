@@ -1,12 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import { ChangeEvent, useState } from "react";
-import { isNamedExports } from "typescript";
 import OptionPanel from "./OptionPanel";
 
 
 
 export default function MainOptionCard() {
-  const [addOptions, setAddOptions] = useState<{Name: string, Options: string[]}[]>([]);
+  const [addOptions, setAddOptions] = useState<{Name: string, Options: string[]}[]>([{Name: "Size", Options: ["Small", "Medium"]}, {Name: "Color", Options: ["Red", "Green", "Blue"]}, {Name: "Style", Options: []}]);
+  
   
   let handleOption = (
     i: number,
@@ -36,6 +36,18 @@ export default function MainOptionCard() {
     setAddOptions([...addOptions, { Name: "", Options: [] }]);
     
   };
+
+  const removeAddOption = (index: number) => {
+let removeAddOption = [...addOptions];
+removeAddOption.splice(index, 1);
+setAddOptions(removeAddOption);
+  }
+
+  const removeValueOption = (i: number, index: number) => {
+    let removeValueOption = [...addOptions];
+    removeValueOption[i]["Options"] = [...removeValueOption[i]["Options"], ""].splice(index, 1);
+    setAddOptions(removeValueOption);
+  }
   const submitHandler = () => {
     //e.preventDefault();
 
@@ -45,7 +57,7 @@ export default function MainOptionCard() {
   return (
     <>  
         <Box>
-        <OptionPanel addOptionHandler={addOptionHandler} addOptions={addOptions}  handleOption={handleOption} addValueHandler={addValueHandler} handleChange={handleChange}/>    
+        <OptionPanel addOptionHandler={addOptionHandler} addOptions={addOptions}  handleOption={handleOption} addValueHandler={addValueHandler} handleChange={handleChange} removeAddOption={removeAddOption} removeValueOption={removeValueOption}/>    
       <Typography marginTop="30px" marginLeft="25px">
         <Button variant="contained" type="submit" onClick={submitHandler}>
           SUBMIT
