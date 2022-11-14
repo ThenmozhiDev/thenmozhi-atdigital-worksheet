@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { ChangeEvent } from "react";
-import ValuesList from "../ValuesList";
+import ValuesList from "./ValuesList";
 
 interface defaultProps {
   onChange: (

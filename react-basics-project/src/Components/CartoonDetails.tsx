@@ -38,6 +38,7 @@ export default function CartoonDetails({
         <CartoonElement
           handleChange={(e) => handleChange(index, e)}
           element={element}
+          key={index}
           
         />
       ))}

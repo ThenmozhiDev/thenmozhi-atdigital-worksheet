@@ -29,7 +29,7 @@ export default function CartoonElement({ handleChange, element }: propsData) {
         >
           <Grid item xs={6}>
             <CartoonDropdown
-            
+            name={"Vendor"}
               props={"Choose Vendor"}
               onChange={handleChange}
               Vendor={element.Vendor}
@@ -37,7 +37,7 @@ export default function CartoonElement({ handleChange, element }: propsData) {
           </Grid>
           <Grid item xs={6}>
             <CartoonDropdown
-            
+             name={"Cartoon"}
               props={"Choose Cartoon"}
               onChange={handleChange}
               Vendor={element.Cartoon}
@@ -52,13 +52,15 @@ export default function CartoonElement({ handleChange, element }: propsData) {
         >
           <Grid item xs={2} sm={4} md={4} style={{ maxWidth: "415px" }}>
             <CartoonText
-              props="Full Body"
+            name={"Full Body"}
+              props="FullBody"
               onChange={handleChange}
               Value={element.FullBody}
             />
           </Grid>
           <Grid item xs={2} sm={4} md={4}>
             <CartoonText
+            name={"PremadeBg"}
               props="Pre-made Bg"
               onChange={handleChange}
               Value={element.PreMadeBg}
@@ -66,6 +68,7 @@ export default function CartoonElement({ handleChange, element }: propsData) {
           </Grid>
           <Grid item xs={2} sm={4} md={4}>
             <CartoonText
+            name={"PetFullBody"}
               props="Pet Full Body"
               onChange={handleChange}
               Value={element.PetFullBody}
@@ -79,6 +82,7 @@ export default function CartoonElement({ handleChange, element }: propsData) {
         >
           <Grid item xs={2} sm={4} md={4} style={{ maxWidth: "415px" }}>
             <CartoonText
+            name={"shoulderup"}
               props="Shoulder up"
               onChange={handleChange}
               Value={element.Shoulderup}
@@ -86,6 +90,7 @@ export default function CartoonElement({ handleChange, element }: propsData) {
           </Grid>
           <Grid item xs={2} sm={4} md={4}>
             <CartoonText
+            name={"CustonBg"}
               props="Custom Bg"
               onChange={handleChange}
               Value={element.CustomBg}
@@ -93,6 +98,7 @@ export default function CartoonElement({ handleChange, element }: propsData) {
           </Grid>
           <Grid item xs={2} sm={4} md={4}>
             <CartoonText
+            name={"Pershoulderup"}
               props="Pet Shoulder up"
               onChange={handleChange}
               Value={element.PetShoulderup}

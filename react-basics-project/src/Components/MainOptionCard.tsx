@@ -15,9 +15,12 @@ export default function MainOptionCard() {
     i: number,
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    console.log(i);
     let newAddOptions = [...addOptions];
+    console.log(newAddOptions)
     newAddOptions[i]["Name"] = e.target.value;
     setAddOptions(newAddOptions);
+    console.log(newAddOptions);
   };
 
   let handleChange = (
@@ -31,9 +34,11 @@ export default function MainOptionCard() {
     setAddOptions(newAddOptions);
   };
   let addValueHandler = (i: number) => {
+    console.log(i);
     let newAddOptions = [...addOptions];
     newAddOptions[i]["Options"] = [...newAddOptions[i]["Options"], ""];
     setAddOptions(newAddOptions);
+    console.log(newAddOptions)
   };
 
   let addOptionHandler = () => {

@@ -5,14 +5,15 @@ interface propsData {
     onChange: (e: any) => void;
     props: any;
     Value: string | Number;
+    name: string;
 }
 
-export default function CartoonText({props, onChange, Value}: propsData ) {
+export default function CartoonText({props, onChange, Value, name}: propsData ) {
     return (
         <>
         <Box display={"flex"} style={{alignItems: "center"}} marginX={2.5}  marginY={2} >
         <Typography minWidth={"179px"}>{props}</Typography>
-        <TextField id="outlined-basic" variant="outlined"  style={{maxWidth: "90px"}} onChange={onChange} value={"$" }/>
+        <TextField id="outlined-basic" variant="outlined"  style={{maxWidth: "90px"}} onChange={onChange} value={"$"+"" +(Value)} name={name}/>
         </Box>     
         </>
     )

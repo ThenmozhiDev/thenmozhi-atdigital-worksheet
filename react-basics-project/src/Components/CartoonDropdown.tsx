@@ -8,9 +8,10 @@ import {
 } from "@mui/material";
 
 interface defaultProps {
-  onChange: (e: any) => void;
+  onChange?: (e: any) => void;
   props: any;
-  Vendor:  string;
+  Vendor?:  string;
+  name: string;
   
 }
 
@@ -18,6 +19,7 @@ export default function CartoonDropdown({
   onChange,
   props,
   Vendor,
+  name,
  
 }: defaultProps) {
   return (
@@ -39,6 +41,8 @@ export default function CartoonDropdown({
                 style={{ minWidth: "270px" }}
                 onChange={onChange}
                 value={Vendor}
+
+                name={name}
               
               >
                 <MenuItem value={"Turned Yellow"}>Turned Yellow</MenuItem>
