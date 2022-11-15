@@ -17,7 +17,7 @@ export default function CartoonText({ label, onChange, name, Value }: propsData)
         marginX={2.5}
         marginY={2}
       >
-        <Typography minWidth={"179px"}>{label}</Typography>
+        <Typography minWidth={"169px"}>{label}</Typography>
         <TextField
           InputProps= {{startAdornment: <InputAdornment position="start">$</InputAdornment>}}
           type="number"

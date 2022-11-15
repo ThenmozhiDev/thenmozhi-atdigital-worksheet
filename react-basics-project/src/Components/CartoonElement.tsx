@@ -19,6 +19,18 @@ export default function CartoonElement({ handleChange, element }: propsData) {
     { label: "One", value: "One" },
     { label: "Two", value: "Two" },
   ];
+
+  let CartoonTextElement = [
+    {name: "FullBody", label: "Full Body", Value: (element.FullBody)},
+    {name: "PreMadeBg", label: "Pre-made Bg", Value: (element.PreMadeBg)},
+    {name: "PetFullBody", label: "Pet Full Body", Value: (element.PetFullBody)},
+    {name: "Shoulderup", label: "Shoulder up", Value: (element.Shoulderup)},
+    // {name: "CustomBg", label: "Custom Bg", Value: (element.CustomBg)},
+    // {name: "PetShoulderup", label: "Pet Shoulder up", Value: (element.PetShoulderup)},
+  ]
+
+  
+
   return (
     <>
       <Box>
@@ -53,15 +65,17 @@ export default function CartoonElement({ handleChange, element }: propsData) {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
+          {CartoonTextElement.map((element) => (
           <Grid item xs={2} sm={4} md={4} style={{ maxWidth: "415px" }}>
             <CartoonText
-              name={"FullBody"}
-              label="FullBody"
+              name={element.name}
+              label={element.label}
               onChange={handleChange}
-              Value={element.FullBody}
+              Value={element.Value}
             />
           </Grid>
-          <Grid item xs={2} sm={4} md={4}>
+          ))}
+          {/* <Grid item xs={2} sm={4} md={4}>
             <CartoonText
               name={"PreMadeBg"}
               label="Pre-made Bg"
@@ -106,7 +120,7 @@ export default function CartoonElement({ handleChange, element }: propsData) {
               onChange={handleChange}
               Value={element.PetShoulderup}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </>

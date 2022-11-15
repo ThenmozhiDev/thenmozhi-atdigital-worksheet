@@ -4,27 +4,13 @@ import CartoonDetails from "./CartoonDetails";
 
 export interface componentProps {
   [key: string]: string;
-  Vendor: string;
-  Cartoon: string;
-  FullBody: string;
-  PreMadeBg: string;
-  PetFullBody: string;
-  Shoulderup: string;
-  CustomBg: string;
-  PetShoulderup: string;
+ 
 }
 
 export default function CartoonMainComponent() {
   const [addVendors, setAddVendors] = useState<componentProps[]>([
     {
-      Vendor: "Turned Yellow",
-      Cartoon: "Simpsons",
-      FullBody: "56",
-      PreMadeBg: "23",
-      PetFullBody: "34",
-      Shoulderup: "68",
-      CustomBg: "25",
-      PetShoulderup: "10",
+      
     },
   ]);
 
