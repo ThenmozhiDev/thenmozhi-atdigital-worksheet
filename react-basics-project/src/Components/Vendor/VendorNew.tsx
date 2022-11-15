@@ -22,7 +22,7 @@ export default function VendorNew({ addOptionHandler, addCartoon }: propsData) {
           style={{minWidth: "14rem"}}
         />
      </Box>
-     <CartoonDropdown props="Cartoon Body-Type" name="gcgf"/>
+     {/* <CartoonDropdown label="Cartoon Body-Type" name="gcgf"/> */}
     
     
      <VendorOption addCartoon={addCartoon} addOptionHandler={addOptionHandler} />

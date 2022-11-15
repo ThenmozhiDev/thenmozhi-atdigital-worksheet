@@ -6,21 +6,22 @@ import {
   Select,
   Typography,
 } from "@mui/material";
+import { OperationCanceledException } from "typescript";
 
 interface defaultProps {
   onChange?: (e: any) => void;
-  props: any;
-  Vendor?:  string;
+  label: any;
+  Value?: string;
   name: string;
-  
+  Options: { label: string; value: string }[];
 }
 
 export default function CartoonDropdown({
   onChange,
-  props,
-  Vendor,
+  label,
+  Value,
   name,
- 
+  Options,
 }: defaultProps) {
   return (
     <>
@@ -32,7 +33,7 @@ export default function CartoonDropdown({
                 id="demo-simple-select-label"
                 style={{ alignItems: "center" }}
               >
-                {props}
+                {label}
               </Typography>
             </Grid>
             <Grid xs={6}>
@@ -40,14 +41,12 @@ export default function CartoonDropdown({
                 id="demo-simple-select"
                 style={{ minWidth: "270px" }}
                 onChange={onChange}
-                value={Vendor}
-
+                value={Value}
                 name={name}
-              
               >
-                <MenuItem value={"Turned Yellow"}>Turned Yellow</MenuItem>
-                <MenuItem value={"Twenty"}>Twenty</MenuItem>
-                <MenuItem value={"Thirty"}>Thirty</MenuItem>
+                {Options.map((Option) => (
+                  <MenuItem value={Option.value}>{Option.label}</MenuItem>
+                ))}
               </Select>
             </Grid>
           </Grid>

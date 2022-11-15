@@ -2,36 +2,39 @@ import { Box, Button } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import CartoonDetails from "./CartoonDetails";
 
-
+export interface componentProps {
+  [key: string]: string;
+  Vendor: string;
+  Cartoon: string;
+  FullBody: string;
+  PreMadeBg: string;
+  PetFullBody: string;
+  Shoulderup: string;
+  CustomBg: string;
+  PetShoulderup: string;
+}
 
 export default function CartoonMainComponent() {
-  const [addVendors, setAddVendors] = useState<
-     {[key: string]: string
-     }[]
-  >([
-     {
-      Vendor: "",
-      Cartoon: "",
-      FullBody: "" ,
-      PreMadeBg: "",
-      PetFullBody: "",
-      Shoulderup: "",
-      CustomBg: "",
-      PetShoulderup: "",
+  const [addVendors, setAddVendors] = useState<componentProps[]>([
+    {
+      Vendor: "Turned Yellow",
+      Cartoon: "Simpsons",
+      FullBody: "56",
+      PreMadeBg: "23",
+      PetFullBody: "34",
+      Shoulderup: "68",
+      CustomBg: "25",
+      PetShoulderup: "10",
     },
   ]);
 
-  
   let handleChange = (
     i: number,
-    
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     let newAddVendor = [...addVendors];
-    newAddVendor[i][e.target.name as string] = e.target.value;
+    newAddVendor[i][e.target.name] = e.target.value;
     setAddVendors(newAddVendor);
-    console.log(newAddVendor);
-    console.log(i);
   };
 
   let addVendorHandler = () => {
@@ -53,7 +56,6 @@ export default function CartoonMainComponent() {
 
   const submitHandler = () => {
     //e.preventDefault();
-
     console.log(addVendors);
   };
 
@@ -63,7 +65,6 @@ export default function CartoonMainComponent() {
         handleChange={handleChange}
         addVendors={addVendors}
         addVendorHandler={addVendorHandler}
-      
       />
       <Box marginX={2.5} marginTop="20px">
         <Button variant="contained" type="submit" onClick={submitHandler}>
