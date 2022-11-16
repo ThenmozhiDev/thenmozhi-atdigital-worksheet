@@ -4,13 +4,14 @@ import {
   Grid,
   MenuItem,
   Select,
+  SelectChangeEvent,
   Typography,
 } from "@mui/material";
 import { OperationCanceledException } from "typescript";
 
 interface defaultProps {
-  onChange?: (e: any) => void;
-  label: any;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => void;
+  label: string;
   Value?: string;
   name: string;
   Options: { label: string; value: string }[];

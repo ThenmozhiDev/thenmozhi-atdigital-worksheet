@@ -1,9 +1,8 @@
-import { Box, FormControl, InputAdornment, TextField, Typography } from "@mui/material";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import { Box, FormControl, InputAdornment, SelectChangeEvent, TextField, Typography } from "@mui/material";
 
 interface propsData {
-  onChange: (e: any) => void;
-  label: any;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  label: string;
   name: string;
   Value?: string;
 }

@@ -1,10 +1,10 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, SelectChangeEvent } from "@mui/material";
 import CartoonDropdown from "./CartoonDropdown";
 import { componentProps } from "./CartoonMainComponent";
 import CartoonText from "./CartoonText";
 
 interface propsData {
-  handleChange: (e: any) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string> ) => void;
   element: componentProps;
 }
 
@@ -25,8 +25,8 @@ export default function CartoonElement({ handleChange, element }: propsData) {
     {name: "PreMadeBg", label: "Pre-made Bg", Value: (element.PreMadeBg)},
     {name: "PetFullBody", label: "Pet Full Body", Value: (element.PetFullBody)},
     {name: "Shoulderup", label: "Shoulder up", Value: (element.Shoulderup)},
-    // {name: "CustomBg", label: "Custom Bg", Value: (element.CustomBg)},
-    // {name: "PetShoulderup", label: "Pet Shoulder up", Value: (element.PetShoulderup)},
+    {name: "CustomBg", label: "Custom Bg", Value: (element.CustomBg)},
+    {name: "PetShoulderup", label: "Pet Shoulder up", Value: (element.PetShoulderup)},
   ]
 
   
@@ -65,62 +65,17 @@ export default function CartoonElement({ handleChange, element }: propsData) {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {CartoonTextElement.map((element) => (
+          {CartoonTextElement.map((element, index) => (
           <Grid item xs={2} sm={4} md={4} style={{ maxWidth: "415px" }}>
             <CartoonText
               name={element.name}
               label={element.label}
               onChange={handleChange}
               Value={element.Value}
+              key={index}
             />
           </Grid>
           ))}
-          {/* <Grid item xs={2} sm={4} md={4}>
-            <CartoonText
-              name={"PreMadeBg"}
-              label="Pre-made Bg"
-              onChange={handleChange}
-              Value={element.PreMadeBg}
-            />
-          </Grid>
-          <Grid item xs={2} sm={4} md={4}>
-            <CartoonText
-              name={"PetFullBody"}
-              label="Pet Full Body"
-              onChange={handleChange}
-              Value={element.PetFullBody}
-            />
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
-          <Grid item xs={2} sm={4} md={4} style={{ maxWidth: "415px" }}>
-            <CartoonText
-              name={"Shoulderup"}
-              label="Shoulder up"
-              onChange={handleChange}
-              Value={element.Shoulderup}
-            />
-          </Grid>
-          <Grid item xs={2} sm={4} md={4}>
-            <CartoonText
-              name={"CustomBg"}
-              label="Custom Bg"
-              onChange={handleChange}
-              Value={element.CustomBg}
-            />
-          </Grid>
-          <Grid item xs={2} sm={4} md={4}>
-            <CartoonText
-              name={"PetShoulderup"}
-              label="Pet Shoulder up"
-              onChange={handleChange}
-              Value={element.PetShoulderup}
-            />
-          </Grid> */}
         </Grid>
       </Box>
     </>

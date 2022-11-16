@@ -1,4 +1,4 @@
-import { Box, Typography,TextField, Button,  } from "@mui/material";
+import { Box, Typography,TextField, Button, Grid,  } from "@mui/material";
 import CartoonDropdown from "../CartoonDropdown";
 import VendorOption from "./VendorOption";
 import AddIcon from "@mui/icons-material/Add";
@@ -7,25 +7,38 @@ import AddIcon from "@mui/icons-material/Add";
 interface propsData {
     
     addOptionHandler: () => void;
-    addCartoon: {CartoonName: "", CartoonType: "", Options: string[]}[];
+    addOptions: string[];
 }
 
-export default function VendorNew({ addOptionHandler, addCartoon }: propsData) {
+export default function VendorNew({ addOptionHandler, addOptions }: propsData) {
+
+    let Values = [
+        { label: "Simpsons", value: "Simpsons" },
+        { label: "One", value: "One" },
+        { label: "Two", value: "Two" },
+      ];
+    //   let Dropdown = [
+    //     {name: "Cartoon Body-Type"},
+    //     {name: "Background-Type"},
+    //     {name: "Pet Body-Type"}
+    //   ]
+
     return (
-        <>
-          
-        <Box display={"flex"}>
-       <Typography marginBottom="20px"> Cartoon Name</Typography>
-        <TextField
-          id="outlined-basic"
-          variant="outlined"        
-          style={{minWidth: "14rem"}}
-        />
-     </Box>
-     {/* <CartoonDropdown label="Cartoon Body-Type" name="gcgf"/> */}
+        <>     
+        <Grid container xs={12}>
+            <Grid xs={6} >
+     <CartoonDropdown label="Cartoon Body-Type" name="gcgf" Options={Values}/>
+     </Grid>
+     <Grid xs={6}>
+     <Typography marginTop="45px" marginLeft="25px" >
+          <Button variant="outlined" type="submit" onClick={addOptionHandler} style={{padding: "12px 25px"}} >
+       <AddIcon /> ADD OPTION
+          </Button>
+        </Typography>
+        </Grid>
+     </Grid>
+     <VendorOption addOptions={addOptions} addOptionHandler={addOptionHandler} label={"Options"}/>
     
-    
-     <VendorOption addCartoon={addCartoon} addOptionHandler={addOptionHandler} />
      </>
     )
 }

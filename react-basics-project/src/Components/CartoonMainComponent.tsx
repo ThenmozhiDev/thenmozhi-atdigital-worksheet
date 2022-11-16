@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import CartoonDetails from "./CartoonDetails";
 
@@ -16,7 +16,7 @@ export default function CartoonMainComponent() {
 
   let handleChange = (
     i: number,
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>
   ) => {
     let newAddVendor = [...addVendors];
     newAddVendor[i][e.target.name] = e.target.value;

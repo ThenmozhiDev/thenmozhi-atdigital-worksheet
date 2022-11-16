@@ -32,7 +32,7 @@ export default function OptionPanel({
   return (
     <Box marginY={4}>
       <Box display={"flex"}>
-        {addOptions.map(({ Name }, index: any) => (
+        {addOptions.map(({ Name }, index: number) => (
           <OptionCard
             key={index}
             onChange={(e) => handleOption(index, e)}

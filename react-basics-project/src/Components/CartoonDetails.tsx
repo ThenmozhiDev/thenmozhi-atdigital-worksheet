@@ -1,15 +1,13 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import CartoonDropdown from "./CartoonDropdown";
-import CartoonText from "./CartoonText";
-import { ChangeEvent, SetStateAction, useState } from "react";
+import { ChangeEvent, ChangeEventHandler } from "react";
 import CartoonHeader from "./CartoonHeader";
 import CartoonElement from "./CartoonElement";
 import { componentProps } from "./CartoonMainComponent";
+import { SelectChangeEvent } from "@mui/material";
 
 interface defaultProps {
   handleChange: (
     i: number,
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e:  ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string> 
   ) => void;
   addVendorHandler: () => void;
   addVendors: componentProps[];
