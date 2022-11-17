@@ -6,14 +6,17 @@ import VendorNew from "./VendorNew";
 import CartoonHeader from "../CartoonHeader";
 import { ChangeEvent } from "react";
 interface defaultProps {
-  addElementHandler: () => void;
-  addCartoon: { CartoonName: string; CartoonType: string; Options: string[] }[];
+  addElementHandler: (i: number) => void;
+  addCartoon: { CartoonName: string; CartoonType: string; Options: {option: string, value: string}[]}[];
   addOptionHandler: (i: number) => void;
-  addVendorHandler: () => void;
-  handleChange: (  i: number,
+  onChange: (e: any) => void;
+  dropdownHandler: (e: any)=> void;
+    optionHandler: ( i: number,
+      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+      addVendor: {CartoonName: string, CartoonType: string, Options: {option: string, value: string}[]};
+  valueHandler: ( i: number,
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    
-  
+    index: number;
 }
 
 
@@ -21,17 +24,19 @@ export default function VendorElement({
   addElementHandler,
   addCartoon,
   addOptionHandler,
-  addVendorHandler,
-  handleChange,
-  
+  onChange,
+  dropdownHandler,
+  optionHandler,
+  addVendor,
+  valueHandler,
+ index,
 }: defaultProps) {
   return (
     <>
-      <CartoonHeader onChange={() => addVendorHandler()}/>
       <Box display={"flex"} marginTop={3} marginX={2.5}>
         <Grid container xs={12}>
-          <Grid xs={3} display={"flex"} maxWidth="174px !important">
-            <Typography marginBottom="20px">
+          <Grid xs={3} display={"flex"} maxWidth="179px !important" alignItems={"center"}>
+            <Typography >
               Cartoon Name
             </Typography>
             </Grid>
@@ -40,7 +45,7 @@ export default function VendorElement({
               id="outlined-basic"
               variant="outlined"
               style={{ minWidth: "17rem" }}
-              // onChange={(e) => handleChange(index, e)}
+               onChange={onChange}
             />
           </Grid>
         </Grid>
@@ -51,11 +56,15 @@ export default function VendorElement({
           <VendorNew
             addOptionHandler={() => addOptionHandler(index)}
             addOptions={addCartoon[index]["Options"]}
+            dropdownHandler={dropdownHandler}
+            optionHandler={optionHandler}
+            valueHandler={valueHandler}
+           
           />
         </Box>
       ))}
 
-      <Button variant="outlined" style={{margin:"15px", padding:"10px"}} onClick={() => addElementHandler()}>
+      <Button variant="outlined" style={{margin:"15px", padding:"10px"}} onClick={() => addElementHandler(index)}>
         <AddIcon /> ADD ELEMENT
       </Button>
     </>
