@@ -5,18 +5,21 @@ import CartoonHeader from "../CartoonHeader";
 import VendorElement from "./VendorElement";
 import VendorHeader from "./VendorHeader";
 
+
 export default function VendorMainComponent() {
   const [addCartoon, setAddCartoon] = useState<
     {
       CartoonName: string;
+      elements: {
       CartoonType: string;
-      Options: { option: string; value: string }[];
+      Options: { option: string; value: string }[]};
     }[]
   >([
     {
       CartoonName: "",
+     elements: {
       CartoonType: "Dropdown",
-      Options: [{ option: "Full Body", value: "" }, { option: "Shoulder up", value: "" }],
+      Options: [{ option: "Full Body", value: "" }, { option: "Shoulder up", value: "" }]},
     },
   ]);
 
@@ -29,8 +32,9 @@ export default function VendorMainComponent() {
       ...addCartoon,
       {
         CartoonName: "",
+        elements: {
         CartoonType: "",
-        Options: [],
+        Options: []},
       },
     ]);
   };
@@ -38,8 +42,8 @@ export default function VendorMainComponent() {
   const addOptionHandler = (i: number) => {
     console.log(i);
     let addNewOption = [...addCartoon];
-    addNewOption[i]["Options"] = [
-      ...addCartoon[i]["Options"],
+    addNewOption[i]["elements"]["Options"] = [
+      ...addCartoon[i]["elements"]["Options"],
       { option: "", value: "" },
     ];
     setAddCartoon(addNewOption);
@@ -51,8 +55,9 @@ export default function VendorMainComponent() {
       ...addCartoon,
       {
         CartoonName: "",
+        elements : {
         CartoonType: "",
-        Options: [{ option: "", value: "" }],
+        Options: [{ option: "", value: "" }]},
       },
     ]);
   };
@@ -71,7 +76,7 @@ export default function VendorMainComponent() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     let addDropdown = [...addCartoon];
-    addDropdown[i]["CartoonType"] = e.target.value;
+    addDropdown[i]["elements"]["CartoonType"] = e.target.value;
     setAddCartoon(addDropdown);
   };
 
@@ -81,7 +86,7 @@ export default function VendorMainComponent() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     let newAddOptions = [...addCartoon];
-    newAddOptions[i]["Options"][j]["option"] = e.target.value;
+    newAddOptions[i]["elements"]["Options"][j]["option"] = e.target.value;
     setAddCartoon(newAddOptions);
   };
   const valueHandler = (
@@ -90,7 +95,7 @@ export default function VendorMainComponent() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     let newAddOptions = [...addCartoon];
-    newAddOptions[i]["Options"][j]["value"] = e.target.value;
+    newAddOptions[i]["elements"]["Options"][j]["value"] = e.target.value;
     setAddCartoon(newAddOptions);
   };
 
@@ -101,14 +106,25 @@ export default function VendorMainComponent() {
   return (
     <>
       <VendorHeader
-        addElementHandler={addElementHandler}
-        addCartoon={addCartoon}
-        addOptionHandler={addOptionHandler}
-        addVendorHandler={addVendorHandler}
-        handleChange={handleChange}
-        dropdownHandler={dropdownHandler}
-        optionHandler={optionHandler}
-        valueHandler={valueHandler}
+        addElementHandler={addElementHandler} addCartoon={[]} addOptionHandler={function (i: number): void {
+          throw new Error("Function not implemented.");
+        } } addVendorHandler={function (): void {
+          throw new Error("Function not implemented.");
+        } } handleChange={function (i: number, e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+          throw new Error("Function not implemented.");
+        } } dropdownHandler={function (i: number, e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+          throw new Error("Function not implemented.");
+        } } optionHandler={function (i: number, j: number, e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+          throw new Error("Function not implemented.");
+        } } valueHandler={function (i: number, j: number, e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+          throw new Error("Function not implemented.");
+        } }        // addCartoon={addCartoon}
+        // addOptionHandler={addOptionHandler}
+        // addVendorHandler={addVendorHandler}
+        // handleChange={handleChange}
+        // dropdownHandler={dropdownHandler}
+        // optionHandler={optionHandler}
+        // valueHandler={valueHandler}
       />
 
       <Typography marginTop="30px" marginLeft="20px">
