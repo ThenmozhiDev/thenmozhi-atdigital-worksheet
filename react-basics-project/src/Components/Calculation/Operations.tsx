@@ -20,15 +20,19 @@ const currencies = [
     value: 'DIVISION',
     label: '/',
   },
+  {
+    value: 'POWER',
+    label: '^',
+  },
 ];
 
-export default function Operations() {
-  const [currency, setCurrency] = React.useState('ADD');
+interface operationProps {
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  operations: number | string;
+}
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrency(event.target.value);
-  };
-
+export default function Operations({handleChange, operations}: operationProps) {
+  
   return (
     <Box
       component="form"
@@ -44,7 +48,7 @@ export default function Operations() {
           id="standard-select-currency"
           select
           label="Operations"
-          value={currency}
+          value={operations}
           onChange={handleChange}   
           variant="standard"
         >
