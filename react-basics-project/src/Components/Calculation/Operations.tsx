@@ -57,7 +57,7 @@ export default function Operations({
           variant="standard"
         >
           {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
+            <MenuItem key={option.value} value={option.label}>
               {option.label}
             </MenuItem>
           ))}

@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { ChangeEvent, SetStateAction, useEffect, useState } from "react";
 import Fields from "./Fields";
 
@@ -24,6 +24,8 @@ export default function CalculationPage() {
     return saved;
   });
 
+
+const [save, setSave] = useState([]);
   const value1Handler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -52,19 +54,19 @@ export default function CalculationPage() {
       return value2;
     }
     switch (Operations) {
-      case "ADD":
+      case "+":
         result = value1 + value2;
         break;
-      case "SUBTRACTION":
+      case "-":
         result = value1 - value2;
         break;
-      case "MULTIPLICATION":
+      case "*":
         result = value1 * value2;
         break;
-      case "DIVISION":
+      case "/":
         result = value1 / value2;
         break;
-      case "POWER":
+      case "^":
         result = value1 ** value2;
         break;
 
@@ -106,20 +108,20 @@ export default function CalculationPage() {
     }
 
     switch (Operators) {
-      case "ADD":
+      case "+":
         result = value1 + value2;
         console.log(result);
         break;
-      case "SUBTRACTION":
+      case "-":
         result = value1 - value2;
         break;
-      case "MULTIPLICATION":
+      case "*":
         result = value1 * value2;
         break;
-      case "DIVISION":
+      case "/":
         result = value1 / value2;
         break;
-      case "POWER":
+      case "^":
         result = value1 ** value2;
         break;
       default:
@@ -137,6 +139,13 @@ export default function CalculationPage() {
     localStorage.setItem("result", JSON.stringify(result));
   }, [value1, value2, operations, result]);
 
+const saveHandler = () => {
+
+  const data = [value1 + " " + operations + " " + value2 +" " + "="+ " " + result];
+  setSave(data);
+  console.log(data);
+}
+
   return (
     <>
       <Fields
@@ -149,6 +158,19 @@ export default function CalculationPage() {
         value1={value1}
         value2={value2}
       />
+      <Typography marginTop="30px" marginLeft="20px">
+        <Button
+          variant="contained"
+          type="submit"
+          onClick={saveHandler}
+          style={{ padding: "10px 40px" }}
+        >
+          SAVE
+        </Button>
+      </Typography>
+      {save.map((element: any, index: any) => (
+      <Typography marginTop={4} marginLeft={3}>Saved value {save}</Typography>
+      ))}
     </>
   );
 }
