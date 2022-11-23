@@ -1,12 +1,28 @@
 import { Button, TextField } from "@mui/material";
-import { ChangeEvent, SetStateAction, useState } from "react";
+import { ChangeEvent, SetStateAction, useEffect, useState } from "react";
 import Fields from "./Fields";
 
 export default function CalculationPage() {
-  const [value1, setValue1] = useState<number>();
-  const [value2, setValue2] = useState<number>();
-  const [operations, setOperations] = useState<number | string>("ADD");
-  let [result, setResult] = useState<number | string>("");
+  const [value1, setValue1] = useState<number>(() => {
+    const value1 = localStorage.getItem("value1") ?? "";
+    return +value1;
+  });
+  console.log(value1);
+  const [value2, setValue2] = useState<number>(() => {
+    const value2 = localStorage.getItem("value2") ?? "";
+    return +value2;
+  });
+  const [operations, setOperations] = useState<number | string>(() => {
+    const saved = localStorage.getItem("operations");
+    console.log("vsfdsf" + saved);
+    const initialvalue = JSON.parse(saved || "");
+    return initialvalue || "";
+  });
+  let [result, setResult] = useState<number | string>(() => {
+    const saved = localStorage.getItem("result") ?? "";
+    console.log("vsfdsf" + saved);
+    return saved;
+  });
 
   const value1Handler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -55,40 +71,43 @@ export default function CalculationPage() {
       default:
     }
 
-    if(value1 && Operations && !value2) {
+    if (value1 && Operations && !value2) {
       result = "";
     }
-    if(!value1 && Operations && value2) {
+    if (!value1 && Operations && value2) {
       result = "";
     }
-   console.log("before"+ result);
+    if (!value1 && Operations && !value2) {
+      result = "";
+    }
+    console.log("before" + result);
     setResult(result);
-    console.log("after"+ result);
+    console.log("after" + result);
   };
 
-  function Calculations() {   
+  function Calculations() {
     if (value1 === undefined) {
       return value1;
     }
     if (value2 === undefined) {
       return value2;
     }
-   
-    let FirstValue = value1 ;
+
+    let FirstValue = value1;
     console.log("one" + FirstValue);
-    let SecondValue =  value2;
+    let SecondValue = value2;
     console.log("two" + SecondValue);
     let Operators = operations;
     console.log("calculate operator" + Operators);
-    if (isNaN(FirstValue) || isNaN(SecondValue) ) {
+    if (isNaN(FirstValue) || isNaN(SecondValue)) {
       result = "";
-      setResult(result)
+      setResult(result);
       return;
     }
-   
+
     switch (Operators) {
       case "ADD":
-        result = FirstValue + SecondValue;
+        result = value1 + value2;
         console.log(result);
         break;
       case "SUBTRACTION":
@@ -106,12 +125,17 @@ export default function CalculationPage() {
       default:
     }
     console.log(result);
-    
-    
-    console.log("operator before" +result);
+
+    console.log("operator before" + result);
     setResult(result);
-    console.log("operator after" +result);
+    console.log("operator after" + result);
   }
+  useEffect(() => {
+    const firstvalue = localStorage.setItem("value1", JSON.stringify(value1));
+    localStorage.setItem("value2", JSON.stringify(value2));
+    localStorage.setItem("operations", JSON.stringify(operations));
+    localStorage.setItem("result", JSON.stringify(result));
+  }, [value1, value2, operations, result]);
 
   return (
     <>
@@ -122,6 +146,8 @@ export default function CalculationPage() {
         operations={operations}
         result={result}
         Calculations={Calculations}
+        value1={value1}
+        value2={value2}
       />
     </>
   );

@@ -2,38 +2,51 @@ import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 import HeaderComponent from "./HeaderComponent";
 
-export interface elementProps {
-  [key: string]: fieldProps;
-}
-
 export interface fieldProps {
   CartoonName: string;
   elements: {
     CartoonType: string;
     Options: { option: string; value: string }[];
-  };
+  }[];
 }
 
 export default function MainComponent() {
   const [addVendor, setAddVendor] = useState<fieldProps[]>([]);
 
-  // const addVendorHandler = (i: number) => {
-  //   console.log(i);
-  //   let addNewVendor = [...addVendor];
-  //   addNewVendor[i]["CartoonName"] as string = [...addVendor[i]["CartoonName"], {}];
-  //   setAddVendor(addNewVendor);
-  // };
+  const addVendorHandler = () => {
+    setAddVendor([...addVendor, { CartoonName: "", elements: [] }]);
+  };
 
-const addElementHandler = () => {
+  const addElementHandler = (i: number) => {
+    let addNewElement = [...addVendor];
+    addNewElement[i]["elements"] = [
+      ...addVendor[i]["elements"],
+      { CartoonType: "", Options: [] },
+    ];
+    setAddVendor(addNewElement);
+  };
 
-}
+  const addOptionHandler = (i: number, j: number) => {
+    let addNewOption = [...addVendor];
+    addNewOption[i]["elements"][j]["Options"] = [
+      ...addVendor[i]["elements"][j]["Options"],
+      { option: "", value: "" },
+    ];
+    setAddVendor(addNewOption);
+    console.log("option" + addNewOption);
+  };
 
   const submitHandler = () => {
     console.log(addVendor);
   };
   return (
     <>
-      {/* <HeaderComponent addVendorHandler={addVendorHandler} addVendor={addVendor}/> */}
+      <HeaderComponent
+        addVendorHandler={addVendorHandler}
+        addVendor={addVendor}
+        addElementHandler={addElementHandler}
+        addOptionHandler={addOptionHandler}
+      />
       <Typography marginTop="30px" marginLeft="20px">
         <Button
           variant="contained"

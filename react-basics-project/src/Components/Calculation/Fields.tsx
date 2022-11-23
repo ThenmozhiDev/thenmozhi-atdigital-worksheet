@@ -9,6 +9,8 @@ interface valueInputProps {
   operations: number | string;
   result: number | string;
   Calculations: () => void;
+  value1: number;
+  value2: number;
   
 }
 
@@ -19,6 +21,8 @@ export default function Fields({
   operations,
   result,
   Calculations,
+  value1,
+  value2,
   
 }: valueInputProps) {
   return (
@@ -34,6 +38,7 @@ export default function Fields({
           onChange={onChange}
           variant="standard"
           onKeyUp={Calculations}
+          value={value1}
           
         />
       </Box>
@@ -51,6 +56,7 @@ export default function Fields({
           variant="standard"
           onChange={onChange1}
           onKeyUp={Calculations}
+          value={value2}
         />
       </Box>
       <Box>
