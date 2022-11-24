@@ -14,18 +14,19 @@ export default function CalculationPage() {
   });
   const [operations, setOperations] = useState<number | string>(() => {
     const saved = localStorage.getItem("operations");
-    console.log("vsfdsf" + saved);
     const initialvalue = JSON.parse(saved || "");
+    console.log("vsfdsf" + saved);
     return initialvalue || "";
   });
   let [result, setResult] = useState<number | string>(() => {
     const saved = localStorage.getItem("result") ?? "";
-    console.log("vsfdsf" + saved);
+    console.log("result" + saved);
     return saved;
   });
 
+  const [save, setSave] = useState<string[]>(JSON.parse(localStorage.getItem("save")?? "")
+  );
 
-const [save, setSave] = useState([]);
   const value1Handler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -69,7 +70,6 @@ const [save, setSave] = useState([]);
       case "^":
         result = value1 ** value2;
         break;
-
       default:
     }
 
@@ -126,6 +126,9 @@ const [save, setSave] = useState([]);
         break;
       default:
     }
+
+
+    
     console.log(result);
 
     console.log("operator before" + result);
@@ -133,18 +136,26 @@ const [save, setSave] = useState([]);
     console.log("operator after" + result);
   }
   useEffect(() => {
-    const firstvalue = localStorage.setItem("value1", JSON.stringify(value1));
+    localStorage.setItem("value1", JSON.stringify(value1));
     localStorage.setItem("value2", JSON.stringify(value2));
     localStorage.setItem("operations", JSON.stringify(operations));
-    localStorage.setItem("result", JSON.stringify(result));
-  }, [value1, value2, operations, result]);
+    localStorage.setItem("result", (result.toString()));
+    localStorage.setItem("save", JSON.stringify(save));
+  }, [value1, value2, operations, result, save]);
 
-const saveHandler = () => {
-
-  const data = [value1 + " " + operations + " " + value2 +" " + "="+ " " + result];
-  setSave(data);
-  console.log(data);
-}
+  const saveHandler = () => {
+   
+    const data = [
+      value1 + " " + operations + " " + value2 + " " + "=" + " " + result,
+    ];
+    if(!value1 || !value2) {
+      setSave([...save]);
+    }
+    else {
+    setSave([...save, data[0]]);
+    }
+    console.log(data);
+  };
 
   return (
     <>
@@ -168,8 +179,10 @@ const saveHandler = () => {
           SAVE
         </Button>
       </Typography>
-      {save.map((element: any, index: any) => (
-      <Typography marginTop={4} marginLeft={3}>Saved value {save}</Typography>
+      {save.map((data, index: any) => (
+        <Typography marginTop={4} marginLeft={3}>
+          Saved value {data}
+        </Typography>
       ))}
     </>
   );
