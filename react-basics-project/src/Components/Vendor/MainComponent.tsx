@@ -14,7 +14,7 @@ export default function MainComponent() {
   const [addVendor, setAddVendor] = useState<fieldProps[]>([]);
 
   const addVendorHandler = () => {
-    setAddVendor([...addVendor, { CartoonName: "", elements: [] }]);
+    setAddVendor([...addVendor, { CartoonName: "", elements: [{CartoonType: "", Options: [{option: "", value: ""}]}] }]);
   };
 
   const addElementHandler = (i: number) => {
@@ -23,14 +23,16 @@ export default function MainComponent() {
       ...addVendor[i]["elements"],
       { CartoonType: "", Options: [] },
     ];
+
     setAddVendor(addNewElement);
   };
 
   const addOptionHandler = (i: number, j: number) => {
+   console.log(i,j);
     let addNewOption = [...addVendor];
+    console.log( "vendor" + addVendor);
     addNewOption[i]["elements"][j]["Options"] = [
-      ...addVendor[i]["elements"][j]["Options"],
-      { option: "", value: "" },
+      ...addVendor[i]["elements"][j]["Options"], { option: "", value: ""},
     ];
     setAddVendor(addNewOption);
     console.log("option" + addNewOption);
